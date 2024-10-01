@@ -1,10 +1,10 @@
 import React from 'react';
-import { Balk } from './balk.tsx';
+import { Balk1000 } from './balk-1000.tsx';
 
 export const Experience = () => {
 	return (
 		<>
-			<Balk />
+			<Balk1000 />
 		</>
 	);
 };
