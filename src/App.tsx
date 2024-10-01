@@ -5,7 +5,9 @@ import { Experience } from './components/experience.tsx';
 function App() {
 	return (
 		<Canvas camera={{ position: [0, 0, 5] }} className={'h-full'}>
-			<Stage>
+			<Stage
+				intensity={1.5}
+			>
 				<Experience />
 			</Stage>
 			<OrbitControls />
