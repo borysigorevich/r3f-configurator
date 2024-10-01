@@ -1,6 +1,6 @@
 import { useTexture } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
-import { useEffect, useRef } from 'react';
+import {useEffect, useMemo, useRef} from 'react';
 import { Group, Mesh, MeshPhongMaterial } from 'three';
 // @ts-ignore
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
@@ -43,8 +43,11 @@ export const useBasicModelSetup = ({
 		bulkMaterial.normalMap = texture.normalMap;
 	}, []);
 
+
+	const clonedObject = useMemo(() => object.clone(), [object])
+
 	return {
 		ref,
-		object,
+		object: clonedObject
 	};
 };

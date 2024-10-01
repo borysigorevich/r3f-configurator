@@ -1,5 +1,5 @@
 import React from 'react';
-import { useBasicModelSetup } from '../hooks/useBasicModelSetup.ts';
+import { useBasicModelSetup } from '../../hooks/useBasicModelSetup.ts';
 
 export const Lodge20_200_1000 = () => {
 	const { ref, object } = useBasicModelSetup({
