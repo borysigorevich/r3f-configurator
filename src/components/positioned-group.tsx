@@ -1,10 +1,12 @@
 import React from 'react';
 
+export type TransformType = [number, number, number];
+
 type PositionedGroupProps = {
 	children: React.ReactNode;
-	position?: [number, number, number];
-	rotation?: [number, number, number];
-	scale?: [number, number, number];
+	position?: TransformType
+	rotation?: TransformType
+	scale?: TransformType
 };
 
 export const PositionedGroup = ({

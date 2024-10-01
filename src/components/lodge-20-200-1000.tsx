@@ -12,7 +12,6 @@ export const Lodge20_200_1000 = () => {
 	return (
 		<>
 			<primitive object={object} ref={ref}
-				position={[1, 0, 0]}
 				/>
 		</>
 	);

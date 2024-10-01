@@ -6,6 +6,7 @@ import { Lodge150_50_1000 } from './lodge-150-50-1000';
 import { Lodge150_50_200 } from './lodge-150-50-200';
 import { Lodge20_190_1000 } from './lodge-20-190-1000';
 import { Lodge20_200_1000 } from './lodge-20-200-1000';
+import { PositionedGroup, TransformType } from './positioned-group.tsx';
 import { ProfileCanopyPerimeterClosed } from './profile-canopy-perimeter-closed';
 import { Ruberoid1000_1000_2 } from './ruberoid-1000-1000-2';
 
@@ -46,10 +47,15 @@ const RenderComponent: React.FC<{ configKey: ModelConfigKeys }> = ({ configKey }
 	}
 
 	return (
-		<ComponentToRender position={position} rotation={rotation} scale={scale}>
+		<PositionedGroup
+			position={position as TransformType}
+			rotation={rotation as TransformType}
+			scale={scale as TransformType}
+		>
+			<ComponentToRender />
 			{children.map((childKey) => (
 				<RenderComponent key={childKey} configKey={childKey as ModelConfigKeys} />
 			))}
-		</ComponentToRender>
+		</PositionedGroup>
 	);
 };
