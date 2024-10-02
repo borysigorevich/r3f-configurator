@@ -15,12 +15,6 @@ export const Balk150_150_2200 = ({ children, ...transforms }: Balk150_150_2200Pr
 
 	const groupRef = useRef<Group | null>(null);
 
-	console.log('render', { transforms });
-
-	useEffect(() => {
-		console.log({ groupRef: groupRef.current, ref: ref.current }, '*** ref');
-	}, []);
-
 	return (
 		<group {...transforms} ref={groupRef}>
 			<primitive object={object} ref={ref} />
