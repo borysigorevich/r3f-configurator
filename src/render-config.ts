@@ -1,6 +1,7 @@
 // modelConfig.ts
 
 const BALK150_150_2200_OFFSET = 0.075;
+const BALK150_150_1000_OFFSET = 0.075;
 
 export const modelConfig = {
 	base: {
@@ -19,12 +20,12 @@ export const modelConfig = {
 			'balk150_150_1000_1',
 			'balk150_150_1000_2',
 			'balk150_150_1000_3',
-			'balk150_150_1000_4'
+			'balk150_150_1000_4',
 		],
 	},
 	balk150_150_2200_1: {
 		component: 'Balk150_150_2200', // Колонна 1
-		position: [-1.5+BALK150_150_2200_OFFSET, 0, -2.5+BALK150_150_2200_OFFSET], // Первая колонна (левый нижний угол)
+		position: [-1.5 + BALK150_150_2200_OFFSET, 0, -2.5 + BALK150_150_2200_OFFSET], // Первая колонна (левый нижний угол)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
@@ -32,7 +33,7 @@ export const modelConfig = {
 	},
 	balk150_150_2200_2: {
 		component: 'Balk150_150_2200', // Колонна 2
-		position: [1.5-BALK150_150_2200_OFFSET, 0, -2.5+BALK150_150_2200_OFFSET], // Вторая колонна (правый нижний угол)
+		position: [1.5 - BALK150_150_2200_OFFSET, 0, -2.5 + BALK150_150_2200_OFFSET], // Вторая колонна (правый нижний угол)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
@@ -40,7 +41,7 @@ export const modelConfig = {
 	},
 	balk150_150_2200_3: {
 		component: 'Balk150_150_2200', // Колонна 3
-		position: [-1.5+BALK150_150_2200_OFFSET, 0, 2.5-BALK150_150_2200_OFFSET], // Третья колонна (левый верхний угол)
+		position: [-1.5 + BALK150_150_2200_OFFSET, 0, 2.5 - BALK150_150_2200_OFFSET], // Третья колонна (левый верхний угол)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
@@ -48,7 +49,7 @@ export const modelConfig = {
 	},
 	balk150_150_2200_4: {
 		component: 'Balk150_150_2200', // Колонна 4
-		position: [1.5-BALK150_150_2200_OFFSET, 0, 2.5-BALK150_150_2200_OFFSET], // Четвертая колонна (правый верхний угол)
+		position: [1.5 - BALK150_150_2200_OFFSET, 0, 2.5 - BALK150_150_2200_OFFSET], // Четвертая колонна (правый верхний угол)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
@@ -56,7 +57,7 @@ export const modelConfig = {
 	},
 	balk150_150_2200_5: {
 		component: 'Balk150_150_2200', // Колонна 5
-		position: [1.5-BALK150_150_2200_OFFSET, 0, 0-BALK150_150_2200_OFFSET], // Пятая колонна (середина нижней части)
+		position: [1.5 - BALK150_150_2200_OFFSET, 0, 0 - BALK150_150_2200_OFFSET], // Пятая колонна (середина нижней части)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
@@ -64,7 +65,7 @@ export const modelConfig = {
 	},
 	balk150_150_2200_6: {
 		component: 'Balk150_150_2200', // Колонна 6
-		position: [-1.5+BALK150_150_2200_OFFSET, 0, 0-BALK150_150_2200_OFFSET], // Шестая колонна (середина верхней части)
+		position: [-1.5 + BALK150_150_2200_OFFSET, 0, 0 - BALK150_150_2200_OFFSET], // Шестая колонна (середина верхней части)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
@@ -169,38 +170,40 @@ export const modelConfig = {
 
 	balk150_150_1000_1: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 1
-		position: [-1.5, 2.2, 2.5], // Левый нижний угол
+		position: [-1.5, 2.2, 2.5 - BALK150_150_1000_OFFSET], // Левый нижний угол
 		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
+		scale: [3, 1, 1],
 		parent: 'base',
 		children: [],
 	},
 	balk150_150_1000_2: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 2
-		position: [0, 0, -1.5], // Правый нижний угол
+		position: [-1.5, 2.2, -2.5 + BALK150_150_1000_OFFSET], // Правый нижний угол
 		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
+		scale: [3, 1, 1],
 		parent: 'base',
 		children: [],
 	},
 	balk150_150_1000_3: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 3
-		position: [0, 0, 1.5], // Левый верхний угол
-		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
+		position: [
+			-1.5 + BALK150_150_1000_OFFSET,
+			2.2,
+			2.5 - BALK150_150_1000_OFFSET * 2,
+		], // Левый верхний угол
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [4.7, 1, 1],
 		parent: 'base',
 		children: [],
 	},
 	balk150_150_1000_4: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 4
-		position: [0, 0, 1.5], // Правый верхний угол
-		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
+		position: [1.5-BALK150_150_1000_OFFSET, 2.2, 2.5-BALK150_150_1000_OFFSET*2], // Правый верхний угол
+		rotation: [0, Math.PI*0.5, 0],
+		scale: [4.7, 1, 1],
 		parent: 'base',
 		children: [],
 	},
-
-
 
 	lodge20_190_1000: {
 		component: 'Lodge20_190_1000', // Нижний фриз
