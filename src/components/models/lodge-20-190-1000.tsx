@@ -1,7 +1,10 @@
 import React from 'react';
 import {useBasicModelSetup} from "../../hooks/useBasicModelSetup.ts";
+import {BasicModelProps} from "../../types.ts";
 
-export const Lodge20_190_1000 = () => {
+type Lodge20_190_1000Props = BasicModelProps;
+
+export const Lodge20_190_1000 = ({children, ...transforms}: Lodge20_190_1000Props) => {
     const { ref, object } = useBasicModelSetup({
         materialsUrl: '/models/Lodge_20x190x1000_bevel.mtl',
         mapUrl: '/textures/texture_wood.jpg',
@@ -10,8 +13,11 @@ export const Lodge20_190_1000 = () => {
     });
 
     return (
-        <>
+        <group
+            {...transforms}
+        >
             <primitive object={object} ref={ref} />
-        </>
+            {children}
+        </group>
     );
 };

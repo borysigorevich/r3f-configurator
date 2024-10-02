@@ -2,6 +2,9 @@
 
 const BALK150_150_2200_OFFSET = 0.075;
 const BALK150_150_1000_OFFSET = 0.075;
+const LODGE20_200_1000_OFFSET = 0.1;
+const LEDGE_Y_OFFSET = 0.1;
+const LEDGE_OFFSET_FROM_COLUMN_EDGE = 0.18;
 
 export const modelConfig = {
 	base: {
@@ -17,12 +20,19 @@ export const modelConfig = {
 			'balk150_150_2200_4',
 			'balk150_150_2200_5',
 			'balk150_150_2200_6',
+
 			'balk150_150_1000_1',
 			'balk150_150_1000_2',
 			'balk150_150_1000_3',
 			'balk150_150_1000_4',
+
+			'lodge_20_200_1000_1',
+			'lodge_20_200_1000_2',
+			'lodge_20_200_1000_3',
+			'lodge_20_200_1000_4',
 		],
 	},
+
 	balk150_150_2200_1: {
 		component: 'Balk150_150_2200', // Колонна 1
 		position: [-1.5 + BALK150_150_2200_OFFSET, 0, -2.5 + BALK150_150_2200_OFFSET], // Первая колонна (левый нижний угол)
@@ -71,6 +81,7 @@ export const modelConfig = {
 		parent: 'base',
 		children: ['balk_corner_11', 'balk_corner_12'],
 	},
+
 	balk_corner_1: {
 		component: 'BalkCorner', // Колонна 6
 		position: [0, 0, 0], // Шестая колонна (середина верхней части)
@@ -198,9 +209,58 @@ export const modelConfig = {
 	},
 	balk150_150_1000_4: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 4
-		position: [1.5-BALK150_150_1000_OFFSET, 2.2, 2.5-BALK150_150_1000_OFFSET*2], // Правый верхний угол
-		rotation: [0, Math.PI*0.5, 0],
+		position: [1.5 - BALK150_150_1000_OFFSET, 2.2, 2.5 - BALK150_150_1000_OFFSET * 2], // Правый верхний угол
+		rotation: [0, Math.PI * 0.5, 0],
 		scale: [4.7, 1, 1],
+		parent: 'base',
+		children: [],
+	},
+
+	lodge_20_200_1000_1: {
+		component: 'Lodge20_200_1000', // Горизонтальная балка 1
+		position: [
+			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
+			2.2 + LEDGE_Y_OFFSET,
+			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - 0.02,
+		], // Левый нижний угол
+		rotation: [0, 0, 0],
+		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2, 1, 1],
+		parent: 'base',
+		children: [],
+	},
+	lodge_20_200_1000_2: {
+		component: 'Lodge20_200_1000', // Горизонтальная балка 2
+		position: [
+			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
+			2.2 + LEDGE_Y_OFFSET,
+			-2.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
+		], // Правый нижний угол
+		rotation: [0, 0, 0],
+		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2, 1, 1],
+		parent: 'base',
+		children: [],
+	},
+	lodge_20_200_1000_3: {
+		component: 'Lodge20_200_1000', // Горизонтальная балка 3
+		position: [
+			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
+			2.2 + LEDGE_Y_OFFSET,
+			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - 0.02,
+		], // Левый верхний угол
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [5 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 - 0.02 * 2, 1, 1],
+		parent: 'base',
+		children: [],
+	},
+	lodge_20_200_1000_4: {
+		component: 'Lodge20_200_1000', // Горизонтальная балка 4
+		position: [
+			1.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - 0.02,
+			2.2 + LEDGE_Y_OFFSET,
+			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - 0.02,
+		], // Правый верхний угол
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [5 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 - 0.02 * 2, 1, 1],
 		parent: 'base',
 		children: [],
 	},
