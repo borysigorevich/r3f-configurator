@@ -7,6 +7,7 @@ function App() {
 		<Canvas camera={{ position: [0, 0, 5] }} className={'h-full'}>
 			<Stage
 				intensity={1.5}
+				adjustCamera={false}
 			>
 				<Experience />
 			</Stage>

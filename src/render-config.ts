@@ -15,7 +15,7 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: "base",
-		children: [],
+		children: ['balk_corner_1', 'balk_corner_2'],
 	},
 	balk150_150_2200_2: {
 		component: "Balk150_150_2200",  // Колонна 2
@@ -23,7 +23,7 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: "base",
-		children: [],
+		children: ['balk_corner_3', 'balk_corner_4'],
 	},
 	balk150_150_2200_3: {
 		component: "Balk150_150_2200",  // Колонна 3
@@ -31,7 +31,7 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: "base",
-		children: [],
+		children: ['balk_corner_5', 'balk_corner_6'],
 	},
 	balk150_150_2200_4: {
 		component: "Balk150_150_2200",  // Колонна 4
@@ -39,22 +39,118 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: "base",
-		children: [],
+		children: ['balk_corner_7', 'balk_corner_8'],
 	},
 	balk150_150_2200_5: {
 		component: "Balk150_150_2200",  // Колонна 5
-		position: [0, 0, -2.5],  // Пятая колонна (середина нижней части)
+		position: [1.5, 0, 0],  // Пятая колонна (середина нижней части)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: "base",
-		children: [],
+		children: ['balk_corner_9', 'balk_corner_10'],
 	},
 	balk150_150_2200_6: {
 		component: "Balk150_150_2200",  // Колонна 6
-		position: [0, 0, 2.5],  // Шестая колонна (середина верхней части)
+		position: [-1.5, 0, 0],  // Шестая колонна (середина верхней части)
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: "base",
+		children: ['balk_corner_11', 'balk_corner_12'],
+	},
+	balk_corner_1: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, 0, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_1",
+		children: [],
+	},
+	balk_corner_2: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * -0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_1",
+		children: [],
+	},
+	balk_corner_3: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_2",
+		children: [],
+	},
+	balk_corner_4: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * -0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_2",
+		children: [],
+	},
+	balk_corner_5: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, 0, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_3",
+		children: [],
+	},
+	balk_corner_6: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_3",
+		children: [],
+	},
+	balk_corner_7: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_4",
+		children: [],
+	},
+	balk_corner_8: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_4",
+		children: [],
+	},
+	balk_corner_9: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_5",
+		children: [],
+	},
+	balk_corner_10: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * -0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_5",
+		children: [],
+	},
+	balk_corner_11: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_6",
+		children: [],
+	},
+	balk_corner_12: {
+		component: "BalkCorner",  // Колонна 6
+		position: [0, 0, 0],  // Шестая колонна (середина верхней части)
+		rotation: [0, Math.PI * -0.5, 0],
+		scale: [1, 1, 1],
+		parent: "balk150_150_2200_6",
 		children: [],
 	},
 	// Добавляем остальные элементы, такие как угловые балки, фризы, профили крыши и т.д.
