@@ -11,8 +11,7 @@ export const ProfileCanopyPerimeterClosed = () => {
 
 	return (
 		<>
-			<primitive object={object} ref={ref}
-			/>
+			<primitive object={object} ref={ref} />
 		</>
 	);
 };

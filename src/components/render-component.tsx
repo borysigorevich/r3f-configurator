@@ -58,7 +58,7 @@ export const RenderComponent = ({ configKey }: { configKey: ModelConfigKeys }) =
 			rotation={rotation as TransformType}
 			scale={scale as TransformType}
 		>
-			{children.map((childKey) => (
+			{children?.map((childKey) => (
 				<RenderComponent key={childKey} configKey={childKey as ModelConfigKeys} />
 			))}
 		</ComponentToRender>

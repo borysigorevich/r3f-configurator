@@ -4,7 +4,12 @@ import { BasicModelProps } from '../../types.ts';
 
 type Lodge20_200_1000Props = BasicModelProps;
 
-export const Lodge20_200_1000 = ({ children, ...transforms }: Lodge20_200_1000Props) => {
+export const Lodge20_200_1000 = ({
+	children,
+	scale,
+	rotation,
+	position,
+}: Lodge20_200_1000Props) => {
 	const { ref, object } = useBasicModelSetup({
 		materialsUrl: '/models/Lodge_20x200x1000.mtl',
 		mapUrl: '/textures/texture_wood.jpg',
@@ -13,10 +18,8 @@ export const Lodge20_200_1000 = ({ children, ...transforms }: Lodge20_200_1000Pr
 	});
 
 	return (
-		<group
-			{...transforms}
-		>
-			<primitive object={object} ref={ref} />
+		<group rotation={rotation} position={position}>
+			<primitive object={object} ref={ref} scale={scale} />
 			{children}
 		</group>
 	);

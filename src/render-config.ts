@@ -6,9 +6,54 @@ const LODGE20_200_1000_WIDTH = 0.02;
 const LEDGE_Y_OFFSET = 0.1;
 const LEDGE_OFFSET_FROM_COLUMN_EDGE = 0.18;
 
+const generateObjectsWithKeys = (
+	totalLength: number,
+	objectWidth: number,
+	baseZPosition: number = -0.075
+) => {
+	let remainingLength = totalLength;
+	const generatedObjects: Record<string, any> = {};
+	let index = 1;
+
+	while (remainingLength > 0) {
+		const positionZ = baseZPosition - objectWidth * (index - 1);
+
+		if (remainingLength >= objectWidth) {
+			generatedObjects[`lodge20_190_1000_${index}`] = {
+				component: 'Lodge20_190_1000',
+				position: [0, 0.2, positionZ],
+				rotation: [0, Math.PI * -0.5, 0],
+				scale: [1, 1, 3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2],
+			};
+			remainingLength -= objectWidth;
+		} else {
+			const scaleFactor = remainingLength / objectWidth;
+			generatedObjects[`lodge20_190_1000_${index}`] = {
+				component: 'Lodge20_190_1000',
+				position: [0, 0.2, -totalLength + remainingLength],
+				rotation: [0, Math.PI * -0.5, 0],
+				scale: [scaleFactor, 1, 3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2],
+			};
+			remainingLength = 0;
+		}
+
+		index++;
+	}
+
+	return generatedObjects;
+};
+
+const totalLength = 5 + 0.18 * 2;
+const objectWidth = 0.19;
+const baseZPosition = -0.075;
+
+const objectsWithKeys = generateObjectsWithKeys(totalLength, objectWidth, baseZPosition);
+
+const keys = Object.keys(objectsWithKeys);
+
 export const modelConfig = {
 	base: {
-		component: 'Base', // База
+		component: 'Base',
 		position: [0, 0, 0],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
@@ -26,15 +71,15 @@ export const modelConfig = {
 			'balk150_150_1000_3',
 			'balk150_150_1000_4',
 
-			'lodge_20_200_1000_1',
-			'lodge_20_200_1000_2',
-			'lodge_20_200_1000_3',
-			'lodge_20_200_1000_4',
+			'lodge20_200_1000_1',
+			'lodge20_200_1000_2',
+			'lodge20_200_1000_3',
+			'lodge20_200_1000_4',
 
-			'lodge_20_200_1000_5',
-			'lodge_20_200_1000_6',
-			'lodge_20_200_1000_7',
-			'lodge_20_200_1000_8',
+			'lodge20_200_1000_5',
+			'lodge20_200_1000_6',
+			'lodge20_200_1000_7',
+			'lodge20_200_1000_8',
 		],
 	},
 
@@ -221,7 +266,7 @@ export const modelConfig = {
 		children: [],
 	},
 
-	lodge_20_200_1000_1: {
+	lodge20_200_1000_1: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 1
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
@@ -231,9 +276,9 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2, 1, 1],
 		parent: 'base',
-		children: [],
+		children: [...keys],
 	},
-	lodge_20_200_1000_2: {
+	lodge20_200_1000_2: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 2
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
@@ -245,7 +290,7 @@ export const modelConfig = {
 		parent: 'base',
 		children: [],
 	},
-	lodge_20_200_1000_3: {
+	lodge20_200_1000_3: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 3
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
@@ -257,7 +302,7 @@ export const modelConfig = {
 		parent: 'base',
 		children: [],
 	},
-	lodge_20_200_1000_4: {
+	lodge20_200_1000_4: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 4
 		position: [
 			1.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
@@ -270,35 +315,35 @@ export const modelConfig = {
 		children: [],
 	},
 
-	lodge_20_200_1000_5: {
+	lodge20_200_1000_5: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 1
 		position: [
-			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE- LODGE20_200_1000_WIDTH,
-			2.2 + LEDGE_Y_OFFSET*2,
+			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
+			2.2 + LEDGE_Y_OFFSET * 2,
 			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE,
 		], // Левый нижний угол
 		rotation: [0, 0, 0],
-		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH*2, 1, 1],
+		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
 		children: [],
 	},
-	lodge_20_200_1000_6: {
+	lodge20_200_1000_6: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 2
 		position: [
-			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE-LODGE20_200_1000_WIDTH,
-			2.2 + LEDGE_Y_OFFSET*2,
-			-2.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE-LODGE20_200_1000_WIDTH,
+			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
+			2.2 + LEDGE_Y_OFFSET * 2,
+			-2.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
 		], // Правый нижний угол
 		rotation: [0, 0, 0],
-		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH*2, 1, 1],
+		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
 		children: [],
 	},
-	lodge_20_200_1000_7: {
+	lodge20_200_1000_7: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 3
 		position: [
-			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE-LODGE20_200_1000_WIDTH,
-			2.2 + LEDGE_Y_OFFSET*2,
+			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
+			2.2 + LEDGE_Y_OFFSET * 2,
 			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE,
 		], // Левый верхний угол
 		rotation: [0, Math.PI * 0.5, 0],
@@ -306,11 +351,11 @@ export const modelConfig = {
 		parent: 'base',
 		children: [],
 	},
-	lodge_20_200_1000_8: {
+	lodge20_200_1000_8: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 4
 		position: [
 			1.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE,
-			2.2 + LEDGE_Y_OFFSET*2,
+			2.2 + LEDGE_Y_OFFSET * 2,
 			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE,
 		], // Правый верхний угол
 		rotation: [0, Math.PI * 0.5, 0],
@@ -318,6 +363,33 @@ export const modelConfig = {
 		parent: 'base',
 		children: [],
 	},
+
+	...objectsWithKeys,
+
+	// lodge_20_190_1000_1: {
+	// 	component: 'Lodge20_190_1000',
+	// 	position: [
+	// 		0,
+	// 		0.2,
+	// 		-0.075,
+	// 	],
+	// 	rotation: [0, Math.PI*-0.5, 0],
+	// 	scale: [1, 1, 3 + LEDGE_OFFSET_FROM_COLUMN_EDGE*2],
+	// 	parent: 'lodge20_200_1000_1',
+	// 	children: [],
+	// },
+	// lodge_20_190_1000_2: {
+	// 	component: 'Lodge20_190_1000',
+	// 	position: [
+	// 		0,
+	// 		0.2,
+	// 		-0.075-0.19*1,
+	// 	],
+	// 	rotation: [0, Math.PI*-0.5, 0],
+	// 	scale: [1, 1, 3 + LEDGE_OFFSET_FROM_COLUMN_EDGE*2],
+	// 	parent: 'lodge20_200_1000_1',
+	// 	children: [],
+	// },
 
 	lodge20_190_1000: {
 		component: 'Lodge20_190_1000', // Нижний фриз
