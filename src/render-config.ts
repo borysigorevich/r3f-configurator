@@ -1,3 +1,5 @@
+import {Ruberoid1000_1000_2} from "./components/models";
+
 const BALK150_150_2200_OFFSET = 0.075;
 const BALK150_150_1000_OFFSET = 0.075;
 const LODGE20_200_1000_WIDTH = 0.02;
@@ -150,11 +152,53 @@ const generateLodgeObjects = (
 
 const lodgeObjects = generateLodgeObjects(5, 0.05, 0.5);
 
+const generateRuberoidObjects = (
+	totalLength: number,
+	objectWidth: number = 1,
+	baseZPosition: number = 0
+) => {
+	let remainingLength = totalLength;
+	const generatedObjects: Record<string, any> = {};
+	let index = 1;
+
+	while (remainingLength > 0) {
+		const positionZ = baseZPosition - objectWidth * (index - 1);
+
+		if (remainingLength >= objectWidth) {
+			generatedObjects[`ruberoid1000_1000_2_${index}`] = {
+				component: 'Ruberoid1000_1000_2',
+				position: [0.02, 0.121, positionZ],
+				rotation: [0, 0, 0],
+				scale: [3.36, 1, 1],
+				parent: `lodge20_200_1000_${index}`, // родитель динамически на основе индекса
+				children: [],
+			};
+			remainingLength -= objectWidth;
+		} else {
+			const scaleFactor = remainingLength / objectWidth;
+			generatedObjects[`ruberoid1000_1000_2_${index}`] = {
+				component: 'Ruberoid1000_1000_2',
+				position: [0.02, 0.121, -totalLength + remainingLength],
+				rotation: [0, 0, 0],
+				scale: [3.36, 1, scaleFactor],
+				parent: `lodge20_200_1000_${index}`, // родитель динамически на основе индекса
+				children: [],
+			};
+			remainingLength = 0;
+		}
+
+		index++;
+	}
+
+	return generatedObjects;
+};
+
+
+const ruberoidObjects = generateRuberoidObjects(5.36);
+
 const lodgeKeys = Object.keys(lodgeObjects);
-
-console.log({ lodgeKeys, lodgeObjects });
-
 const keys = Object.keys(objectsWithKeys);
+const ruberoidKeys = Object.keys(ruberoidObjects);
 
 export const modelConfig = {
 	base: {
@@ -341,8 +385,6 @@ export const modelConfig = {
 		scale: [3, 1, 1],
 		parent: 'base',
 		children: [
-			// "lodge150_50_1000_1",
-			// 'lodge150_50_1000_2'
 			...lodgeKeys,
 		],
 	},
@@ -388,7 +430,7 @@ export const modelConfig = {
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2, 1, 1],
 		parent: 'base',
 		children: [
-			// ...keys
+			...keys
 		],
 	},
 	lodge20_200_1000_2: {
@@ -438,7 +480,11 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
-		children: [],
+		children: [
+			// 'ruberoid1000_1000_2_1',
+			// 'ruberoid1000_1000_2_2',
+			...ruberoidKeys
+		],
 	},
 	lodge20_200_1000_6: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 2
@@ -479,6 +525,8 @@ export const modelConfig = {
 
 
 	...lodgeObjects,
+	...objectsWithKeys,
+
 	lodge150_50_1000_2_1: {
 		component: 'Lodge150_50_1000',
 		position: [-0.1, 0.15, 0.31],
@@ -571,6 +619,24 @@ export const modelConfig = {
 		children: [],
 	},
 
+	// ruberoid1000_1000_2_1: {
+	// 	component: 'Ruberoid1000_1000_2',
+	// 	position: [0.02, 0.121, 0],
+	// 	rotation: [0, 0, 0],
+	// 	scale: [3.36, 1, 1],
+	// 	parent: 'lodge20_200_1000_5',
+	// 	children: [],
+	// },
+	// ruberoid1000_1000_2_2: {
+	// 	component: 'Ruberoid1000_1000_2',
+	// 	position: [0.02+1*2, 0.121, 0],
+	// 	rotation: [0, 0, 0],
+	// 	scale: [1, 1, 1],
+	// 	parent: 'lodge20_200_1000_5',
+	// 	children: [],
+	// },
+	...ruberoidObjects,
+
 	lodge20_190_1000: {
 		component: 'Lodge20_190_1000', // Нижний фриз
 		position: [0, 2.2, 0],
@@ -593,14 +659,6 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
-		children: [],
-	},
-	ruberoid1000_1000_2: {
-		component: 'Ruberoid1000_1000_2', // Покрытие крыши
-		position: [0, 3.2, 0],
-		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
-		parent: 'profileCanopyPerimeterClosed',
 		children: [],
 	},
 };

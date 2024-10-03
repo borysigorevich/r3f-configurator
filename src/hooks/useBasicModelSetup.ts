@@ -1,10 +1,8 @@
 import { useTexture } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
 import { useEffect, useMemo, useRef } from 'react';
-import { Group, Mesh, MeshPhongMaterial } from 'three';
-// @ts-ignore
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
-// @ts-ignore
+import { Group, Mesh, MeshPhongMaterial } from 'three'; // @ts-ignore
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'; // @ts-ignore
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
 type UseBasicModelSetupParams = {
@@ -35,12 +33,14 @@ export const useBasicModelSetup = ({
 
 	useEffect(() => {
 		if (!ref.current) return;
+		const mesh = ref.current.children[0] as Mesh;
+		const balkMaterial = mesh.material as MeshPhongMaterial;
 
-		const bulkMaterial = (ref.current.children[0] as Mesh)
-			.material as MeshPhongMaterial;
+		// mesh.castShadow = true;
+		mesh.receiveShadow = true;
 
-		bulkMaterial.map = texture.map;
-		bulkMaterial.normalMap = texture.normalMap;
+		balkMaterial.map = texture.map;
+		balkMaterial.normalMap = texture.normalMap;
 	}, []);
 
 	const clonedObject = useMemo(() => object.clone(), [object]);

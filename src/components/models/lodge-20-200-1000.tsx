@@ -18,8 +18,8 @@ export const Lodge20_200_1000 = ({
 	});
 
 	return (
-		<group rotation={rotation} position={position}>
-			<primitive object={object} ref={ref} scale={scale} />
+		<group position={position}>
+			<primitive object={object} ref={ref} scale={scale} rotation={rotation} />
 			{children}
 		</group>
 	);
