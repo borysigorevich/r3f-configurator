@@ -1,4 +1,4 @@
-import { modelConfig, ModelConfigKeys } from '../render-config.ts';
+import {useConfigStore} from "../store/config-store.ts";
 import { TransformType } from '../types.ts';
 import {
 	Balk150_150_1000,
@@ -13,8 +13,12 @@ import {
 } from './models';
 import { Base } from './models/base.tsx';
 
-export const RenderComponent = ({ configKey }: { configKey: ModelConfigKeys }) => {
-	const { component, position, rotation, scale, children } = modelConfig[configKey];
+export const RenderComponent = ({ configKey }: { configKey: string }) => {
+	const config = useConfigStore(state => state.config);
+
+	if(!config) return null;
+
+	const { component, position, rotation, scale, children } = config[configKey];
 
 	let ComponentToRender;
 	switch (component) {
@@ -58,8 +62,8 @@ export const RenderComponent = ({ configKey }: { configKey: ModelConfigKeys }) =
 			rotation={rotation as TransformType}
 			scale={scale as TransformType}
 		>
-			{children?.map((childKey) => (
-				<RenderComponent key={childKey} configKey={childKey as ModelConfigKeys} />
+			{children?.map((childKey: string) => (
+				<RenderComponent key={childKey} configKey={childKey} />
 			))}
 		</ComponentToRender>
 	);

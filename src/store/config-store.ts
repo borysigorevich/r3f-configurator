@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { Object3DType } from '../types.ts';
 
-type ConfigType = Record<string, Object3DType>;
+export type ConfigType = Record<string, Object3DType>;
 
 type ConfigStoreType = {
 	totalLength: number;
