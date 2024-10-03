@@ -49,6 +49,61 @@ const baseZPosition = -0.075;
 
 const objectsWithKeys = generateObjectsWithKeys(totalLength, objectWidth, baseZPosition);
 
+const generateLodgeObjects = (availableLength: number, objectWidth: number, step: number) => {
+	const generatedObjects: Record<string, any> = {};
+	let index = 1;
+	let remainingLength = availableLength;
+
+	// Начальные объекты, которые установлены по краям
+	generatedObjects[`lodge150_50_1000_${index}`] = {
+		component: 'Lodge150_50_1000',
+		position: [0, 0.15, -0.025],  // Позиция для первого объекта
+		rotation: [0, 0, 0],
+		scale: [1, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	};
+	index++;
+
+	generatedObjects[`lodge150_50_1000_${index}`] = {
+		component: 'Lodge150_50_1000',
+		position: [0, 0.15, -availableLength + 0.125],  // Позиция для последнего объекта
+		rotation: [0, 0, 0],
+		scale: [1, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	};
+	index++;
+
+	// Вычисляем оставшееся пространство
+	remainingLength -= 0.15 * 2 + objectWidth * 2;
+
+	// Генерируем объекты с шагом 0.5м
+	let currentPosition = step;
+	while (remainingLength >= step) {
+		generatedObjects[`lodge150_50_1000_${index}`] = {
+			component: 'Lodge150_50_1000',
+			position: [0, 0.15, -currentPosition],
+			rotation: [0, 0, 0],
+			scale: [1, 1, 1],
+			parent: 'balk150_150_1000_1',
+			children: [],
+		};
+
+		currentPosition += step;
+		remainingLength -= step;
+		index++;
+	}
+
+	return generatedObjects;
+};
+
+const lodgeObjects = generateLodgeObjects(5, 0.05, 0.5);
+
+const lodgeKeys = Object.keys(lodgeObjects);
+
+console.log({ lodgeKeys, lodgeObjects });
+
 const keys = Object.keys(objectsWithKeys);
 
 export const modelConfig = {
@@ -235,7 +290,11 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [3, 1, 1],
 		parent: 'base',
-		children: [],
+		children: [
+			// "lodge150_50_1000_1",
+			// 'lodge150_50_1000_2'
+			...lodgeKeys
+		],
 	},
 	balk150_150_1000_2: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 2
@@ -243,7 +302,9 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [3, 1, 1],
 		parent: 'base',
-		children: [],
+		children: [
+			// "lodge150_50_1000_2"
+		],
 	},
 	balk150_150_1000_3: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 3
@@ -276,7 +337,9 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2, 1, 1],
 		parent: 'base',
-		children: [...keys],
+		children: [
+			// ...keys
+		],
 	},
 	lodge20_200_1000_2: {
 		component: 'Lodge20_200_1000', // Горизонтальная балка 2
@@ -364,7 +427,7 @@ export const modelConfig = {
 		children: [],
 	},
 
-	...objectsWithKeys,
+	// ...objectsWithKeys,
 
 	// lodge_20_190_1000_1: {
 	// 	component: 'Lodge20_190_1000',
@@ -378,16 +441,42 @@ export const modelConfig = {
 	// 	parent: 'lodge20_200_1000_1',
 	// 	children: [],
 	// },
-	// lodge_20_190_1000_2: {
-	// 	component: 'Lodge20_190_1000',
+
+	...lodgeObjects,
+	// lodge150_50_1000_1: {
+	// 	component: 'Lodge150_50_1000',
 	// 	position: [
 	// 		0,
-	// 		0.2,
-	// 		-0.075-0.19*1,
+	// 		0.15,
+	// 		-0.025,
 	// 	],
-	// 	rotation: [0, Math.PI*-0.5, 0],
-	// 	scale: [1, 1, 3 + LEDGE_OFFSET_FROM_COLUMN_EDGE*2],
-	// 	parent: 'lodge20_200_1000_1',
+	// 	rotation: [0, 0, 0],
+	// 	scale: [1, 1, 1],
+	// 	parent: 'balk150_150_1000_1',
+	// 	children: [],
+	// },
+	// lodge150_50_1000_2: {
+	// 	component: 'Lodge150_50_1000',
+	// 	position: [
+	// 		0,
+	// 		0.15,
+	// 		-5+0.125,
+	// 	],
+	// 	rotation: [0, 0, 0],
+	// 	scale: [1, 1, 1],
+	// 	parent: 'balk150_150_1000_1',
+	// 	children: [],
+	// },
+	// lodge150_50_1000_2: {
+	// 	component: 'Lodge150_50_1000',
+	// 	position: [
+	// 		0,
+	// 		0.15,
+	// 		-0.025,
+	// 	],
+	// 	rotation: [0, 0, 0],
+	// 	scale: [1, 1, 1],
+	// 	parent: 'balk150_150_1000_2',
 	// 	children: [],
 	// },
 
