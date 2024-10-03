@@ -57,9 +57,9 @@ const generateLodgeObjects = (availableLength: number, objectWidth: number, step
 	// Начальные объекты, которые установлены по краям
 	generatedObjects[`lodge150_50_1000_${index}`] = {
 		component: 'Lodge150_50_1000',
-		position: [0, 0.15, -0.025],  // Позиция для первого объекта
+		position: [0.075, 0.15, -0.025],  // Позиция для первого объекта
 		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
+		scale: [3 - 0.075*2, 1, 1],
 		parent: 'balk150_150_1000_1',
 		children: [],
 	};
@@ -67,9 +67,9 @@ const generateLodgeObjects = (availableLength: number, objectWidth: number, step
 
 	generatedObjects[`lodge150_50_1000_${index}`] = {
 		component: 'Lodge150_50_1000',
-		position: [0, 0.15, -availableLength + 0.125],  // Позиция для последнего объекта
+		position: [0.075, 0.15, -availableLength + 0.125],  // Позиция для последнего объекта
 		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
+		scale: [3 - 0.075*2, 1, 1],
 		parent: 'balk150_150_1000_1',
 		children: [],
 	};
@@ -83,9 +83,9 @@ const generateLodgeObjects = (availableLength: number, objectWidth: number, step
 	while (remainingLength >= step) {
 		generatedObjects[`lodge150_50_1000_${index}`] = {
 			component: 'Lodge150_50_1000',
-			position: [0, 0.15, -currentPosition],
+			position: [0.075, 0.15, -currentPosition],
 			rotation: [0, 0, 0],
-			scale: [1, 1, 1],
+			scale: [3 - 0.075*2, 1, 1],
 			parent: 'balk150_150_1000_1',
 			children: [],
 		};
