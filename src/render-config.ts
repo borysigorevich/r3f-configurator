@@ -497,7 +497,9 @@ export const modelConfig = {
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
-		children: [],
+		children: [
+			'profileCanopyPerimeterClosed_2'
+		],
 	},
 	lodge20_200_1000_7: {
 		component: 'Lodge20_200_1000',
@@ -642,6 +644,14 @@ export const modelConfig = {
 		component: 'ProfileCanopyPerimeterClosed', // Профиль периметра
 		position: [0, 0.2, 0.02],
 		rotation: [0, 0, 0],
+		scale: [3.40, 1, 1],
+		parent: 'lodge20_200_1000_5',
+		children: [],
+	},
+	profileCanopyPerimeterClosed_2: {
+		component: 'ProfileCanopyPerimeterClosed', // Профиль периметра
+		position: [3.40, 0.2, 0],
+		rotation: [0, Math.PI, 0],
 		scale: [3.40, 1, 1],
 		parent: 'lodge20_200_1000_5',
 		children: [],
