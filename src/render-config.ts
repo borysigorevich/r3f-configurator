@@ -61,7 +61,8 @@ const generateLodgeObjects = (availableLength: number, objectWidth: number, step
 		rotation: [0, 0, 0],
 		scale: [3 - 0.025*2, 1, 1],
 		parent: 'balk150_150_1000_1',
-		children: [],
+		children: [
+		],
 	};
 	index++;
 
@@ -293,7 +294,7 @@ export const modelConfig = {
 		children: [
 			// "lodge150_50_1000_1",
 			// 'lodge150_50_1000_2'
-			...lodgeKeys
+			...lodgeKeys,
 		],
 	},
 	balk150_150_1000_2: {
@@ -453,7 +454,12 @@ export const modelConfig = {
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [5+0.01+0.15+0.16, 1, 1],
 		parent: 'balk150_150_1000_3',
-		children: [],
+		children: [
+			'lodge150_50_200_1',
+			'lodge150_50_200_2',
+			'lodge150_50_200_3',
+			'lodge150_50_200_4',
+		],
 	},
 	'lodge150_50_1000_2_2':{
 		component: 'Lodge150_50_1000',
@@ -461,6 +467,74 @@ export const modelConfig = {
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [5+0.01+0.15+0.16, 1, 1],
 		parent: 'balk150_150_1000_3',
+		children: ['lodge150_50_200_5',
+			'lodge150_50_200_6',
+			'lodge150_50_200_7',
+			'lodge150_50_200_8',],
+	},
+
+	'lodge150_50_200_1':{
+		component: 'Lodge150_50_200',
+		position: [0.075 + 0.6, 0, 0],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	},
+	'lodge150_50_200_2':{
+		component: 'Lodge150_50_200',
+		position: [0.075 + 0.6*2, 0, 0],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	},
+	'lodge150_50_200_3':{
+		component: 'Lodge150_50_200',
+		position: [0.075 + 0.6*3, 0, 0],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	},
+	'lodge150_50_200_4':{
+		component: 'Lodge150_50_200',
+		position: [0.075 + 0.6*4, 0, 0],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	},
+	'lodge150_50_200_5':{
+		component: 'Lodge150_50_200',
+		position: [-0.075 - 0.6, 0, -5-0.11],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	},
+	'lodge150_50_200_6':{
+		component: 'Lodge150_50_200',
+		position: [-0.075 - 0.6*2, 0, -5-0.11],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	},
+	'lodge150_50_200_7':{
+		component: 'Lodge150_50_200',
+		position: [-0.075 - 0.6*3, 0, -5-0.11],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
+		children: [],
+	},
+	'lodge150_50_200_8':{
+		component: 'Lodge150_50_200',
+		position: [-0.075 - 0.6*4, 0, -5-0.11],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [1.05, 1, 1],
+		parent: 'balk150_150_1000_1',
 		children: [],
 	},
 	// lodge150_50_1000_1: {
