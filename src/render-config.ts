@@ -57,9 +57,9 @@ const generateLodgeObjects = (availableLength: number, objectWidth: number, step
 	// Начальные объекты, которые установлены по краям
 	generatedObjects[`lodge150_50_1000_${index}`] = {
 		component: 'Lodge150_50_1000',
-		position: [0.075, 0.15, -0.025],  // Позиция для первого объекта
+		position: [0.025, 0.15, -0.025],  // Позиция для первого объекта
 		rotation: [0, 0, 0],
-		scale: [3 - 0.075*2, 1, 1],
+		scale: [3 - 0.025*2, 1, 1],
 		parent: 'balk150_150_1000_1',
 		children: [],
 	};
@@ -67,9 +67,9 @@ const generateLodgeObjects = (availableLength: number, objectWidth: number, step
 
 	generatedObjects[`lodge150_50_1000_${index}`] = {
 		component: 'Lodge150_50_1000',
-		position: [0.075, 0.15, -availableLength + 0.125],  // Позиция для последнего объекта
+		position: [0.025, 0.15, -availableLength + 0.125],  // Позиция для последнего объекта
 		rotation: [0, 0, 0],
-		scale: [3 - 0.075*2, 1, 1],
+		scale: [3 - 0.025*2, 1, 1],
 		parent: 'balk150_150_1000_1',
 		children: [],
 	};
@@ -83,9 +83,9 @@ const generateLodgeObjects = (availableLength: number, objectWidth: number, step
 	while (remainingLength >= step) {
 		generatedObjects[`lodge150_50_1000_${index}`] = {
 			component: 'Lodge150_50_1000',
-			position: [0.075, 0.15, -currentPosition],
+			position: [0.025, 0.15, -currentPosition],
 			rotation: [0, 0, 0],
-			scale: [3 - 0.075*2, 1, 1],
+			scale: [3 - 0.025*2, 1, 1],
 			parent: 'balk150_150_1000_1',
 			children: [],
 		};
@@ -316,7 +316,9 @@ export const modelConfig = {
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [4.7, 1, 1],
 		parent: 'base',
-		children: [],
+		children: [
+			'lodge150_50_1000_2_1'
+		],
 	},
 	balk150_150_1000_4: {
 		component: 'Balk150_150_1000', // Горизонтальная балка 4
@@ -324,7 +326,9 @@ export const modelConfig = {
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [4.7, 1, 1],
 		parent: 'base',
-		children: [],
+		children: [
+			'lodge150_50_1000_2_2'
+		],
 	},
 
 	lodge20_200_1000_1: {
@@ -443,6 +447,22 @@ export const modelConfig = {
 	// },
 
 	...lodgeObjects,
+	'lodge150_50_1000_2_1':{
+		component: 'Lodge150_50_1000',
+		position: [-0.1, 0.15, 0.31],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [5+0.01+0.15+0.16, 1, 1],
+		parent: 'balk150_150_1000_3',
+		children: [],
+	},
+	'lodge150_50_1000_2_2':{
+		component: 'Lodge150_50_1000',
+		position: [0.05, 0.15, 0.31],
+		rotation: [0, Math.PI * 0.5, 0],
+		scale: [5+0.01+0.15+0.16, 1, 1],
+		parent: 'balk150_150_1000_3',
+		children: [],
+	},
 	// lodge150_50_1000_1: {
 	// 	component: 'Lodge150_50_1000',
 	// 	position: [
