@@ -1,7 +1,15 @@
 import React from 'react';
 import { useBasicModelSetup } from '../../hooks/useBasicModelSetup.ts';
+import { BasicModelProps } from '../../types.ts';
 
-export const ProfileCanopyPerimeterClosed = () => {
+type ProfileCanopyPerimeterClosedProps = BasicModelProps;
+
+export const ProfileCanopyPerimeterClosed = ({
+	children,
+	scale,
+	rotation,
+	position,
+}: ProfileCanopyPerimeterClosedProps) => {
 	const { ref, object } = useBasicModelSetup({
 		materialsUrl: '/models/profile_canopy_perimeter_closed.mtl',
 		mapUrl: '/textures/texture_wood.jpg',
@@ -10,8 +18,9 @@ export const ProfileCanopyPerimeterClosed = () => {
 	});
 
 	return (
-		<>
-			<primitive object={object} ref={ref} />
-		</>
+		<group position={position}>
+			<primitive object={object} ref={ref} scale={scale} rotation={rotation} />
+			{children}
+		</group>
 	);
 };

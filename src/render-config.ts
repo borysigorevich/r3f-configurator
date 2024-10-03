@@ -483,7 +483,8 @@ export const modelConfig = {
 		children: [
 			// 'ruberoid1000_1000_2_1',
 			// 'ruberoid1000_1000_2_2',
-			...ruberoidKeys
+			...ruberoidKeys,
+			'profileCanopyPerimeterClosed_1'
 		],
 	},
 	lodge20_200_1000_6: {
@@ -637,28 +638,12 @@ export const modelConfig = {
 	// },
 	...ruberoidObjects,
 
-	lodge20_190_1000: {
-		component: 'Lodge20_190_1000', // Нижний фриз
-		position: [0, 2.2, 0],
-		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
-		parent: 'base',
-		children: ['lodge20_200_1000'],
-	},
-	lodge20_200_1000: {
-		component: 'Lodge20_200_1000', // Верхний фриз
-		position: [0, 2.4, 0],
-		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
-		parent: 'lodge20_190_1000',
-		children: [],
-	},
-	profileCanopyPerimeterClosed: {
+	profileCanopyPerimeterClosed_1: {
 		component: 'ProfileCanopyPerimeterClosed', // Профиль периметра
-		position: [0, 3, 0],
+		position: [0, 0.2, 0.02],
 		rotation: [0, 0, 0],
-		scale: [1, 1, 1],
-		parent: 'base',
+		scale: [3.40, 1, 1],
+		parent: 'lodge20_200_1000_5',
 		children: [],
 	},
 };
