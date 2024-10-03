@@ -11,3 +11,9 @@ export type BaseTransformType = {
 export type BasicModelProps = {
 	children?: ReactNode;
 } & BaseTransformType;
+
+export type Object3DType = {
+	component: string
+	parent?: string
+	children?: string[]
+} & BaseTransformType

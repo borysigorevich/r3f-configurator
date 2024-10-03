@@ -1,4 +1,4 @@
-import {Ruberoid1000_1000_2} from "./components/models";
+import { Object3DType } from './types.ts';
 
 const BALK150_150_2200_OFFSET = 0.075;
 const BALK150_150_1000_OFFSET = 0.075;
@@ -12,7 +12,7 @@ const generateObjectsWithKeys = (
 	baseZPosition: number = -0.075
 ) => {
 	let remainingLength = totalLength;
-	const generatedObjects: Record<string, any> = {};
+	const generatedObjects: Record<string, Object3DType> = {};
 	let index = 1;
 
 	while (remainingLength > 0) {
@@ -54,11 +54,10 @@ const generateLodgeObjects = (
 	objectWidth: number,
 	step: number
 ) => {
-	const generatedObjects: Record<string, any> = {};
+	const generatedObjects: Record<string, Object3DType> = {};
 	let index = 1;
 	let remainingLength = availableLength;
 
-	// Начальные объекты, которые установлены по краям
 	generatedObjects[`lodge150_50_1000_${index}`] = {
 		component: 'Lodge150_50_1000',
 		position: [0.025, 0.15, -0.025],
@@ -158,7 +157,7 @@ const generateRuberoidObjects = (
 	baseZPosition: number = 0
 ) => {
 	let remainingLength = totalLength;
-	const generatedObjects: Record<string, any> = {};
+	const generatedObjects: Record<string, Object3DType> = {};
 	let index = 1;
 
 	while (remainingLength > 0) {
@@ -170,7 +169,7 @@ const generateRuberoidObjects = (
 				position: [0.02, 0.121, positionZ],
 				rotation: [0, 0, 0],
 				scale: [3.36, 1, 1],
-				parent: `lodge20_200_1000_${index}`, // родитель динамически на основе индекса
+				parent: `lodge20_200_1000_${index}`,
 				children: [],
 			};
 			remainingLength -= objectWidth;
@@ -181,7 +180,7 @@ const generateRuberoidObjects = (
 				position: [0.02, 0.121, -totalLength + remainingLength],
 				rotation: [0, 0, 0],
 				scale: [3.36, 1, scaleFactor],
-				parent: `lodge20_200_1000_${index}`, // родитель динамически на основе индекса
+				parent: `lodge20_200_1000_${index}`,
 				children: [],
 			};
 			remainingLength = 0;
@@ -192,7 +191,6 @@ const generateRuberoidObjects = (
 
 	return generatedObjects;
 };
-
 
 const ruberoidObjects = generateRuberoidObjects(5.36);
 
@@ -233,48 +231,48 @@ export const modelConfig = {
 	},
 
 	balk150_150_2200_1: {
-		component: 'Balk150_150_2200', // Колонна 1
-		position: [-1.5 + BALK150_150_2200_OFFSET, 0, -2.5 + BALK150_150_2200_OFFSET], // Первая колонна (левый нижний угол)
+		component: 'Balk150_150_2200',
+		position: [-1.5 + BALK150_150_2200_OFFSET, 0, -2.5 + BALK150_150_2200_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
 		children: ['balk_corner_1', 'balk_corner_2'],
 	},
 	balk150_150_2200_2: {
-		component: 'Balk150_150_2200', // Колонна 2
-		position: [1.5 - BALK150_150_2200_OFFSET, 0, -2.5 + BALK150_150_2200_OFFSET], // Вторая колонна (правый нижний угол)
+		component: 'Balk150_150_2200',
+		position: [1.5 - BALK150_150_2200_OFFSET, 0, -2.5 + BALK150_150_2200_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
 		children: ['balk_corner_3', 'balk_corner_4'],
 	},
 	balk150_150_2200_3: {
-		component: 'Balk150_150_2200', // Колонна 3
-		position: [-1.5 + BALK150_150_2200_OFFSET, 0, 2.5 - BALK150_150_2200_OFFSET], // Третья колонна (левый верхний угол)
+		component: 'Balk150_150_2200',
+		position: [-1.5 + BALK150_150_2200_OFFSET, 0, 2.5 - BALK150_150_2200_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
 		children: ['balk_corner_5', 'balk_corner_6'],
 	},
 	balk150_150_2200_4: {
-		component: 'Balk150_150_2200', // Колонна 4
-		position: [1.5 - BALK150_150_2200_OFFSET, 0, 2.5 - BALK150_150_2200_OFFSET], // Четвертая колонна (правый верхний угол)
+		component: 'Balk150_150_2200',
+		position: [1.5 - BALK150_150_2200_OFFSET, 0, 2.5 - BALK150_150_2200_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
 		children: ['balk_corner_7', 'balk_corner_8'],
 	},
 	balk150_150_2200_5: {
-		component: 'Balk150_150_2200', // Колонна 5
-		position: [1.5 - BALK150_150_2200_OFFSET, 0, 0 - BALK150_150_2200_OFFSET], // Пятая колонна (середина нижней части)
+		component: 'Balk150_150_2200',
+		position: [1.5 - BALK150_150_2200_OFFSET, 0, 0 - BALK150_150_2200_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
 		children: ['balk_corner_9', 'balk_corner_10'],
 	},
 	balk150_150_2200_6: {
-		component: 'Balk150_150_2200', // Колонна 6
-		position: [-1.5 + BALK150_150_2200_OFFSET, 0, 0 - BALK150_150_2200_OFFSET], // Шестая колонна (середина верхней части)
+		component: 'Balk150_150_2200',
+		position: [-1.5 + BALK150_150_2200_OFFSET, 0, 0 - BALK150_150_2200_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'base',
@@ -282,96 +280,96 @@ export const modelConfig = {
 	},
 
 	balk_corner_1: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_1',
 		children: [],
 	},
 	balk_corner_2: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * -0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_1',
 		children: [],
 	},
 	balk_corner_3: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_2',
 		children: [],
 	},
 	balk_corner_4: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * -0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_2',
 		children: [],
 	},
 	balk_corner_5: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, 0, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_3',
 		children: [],
 	},
 	balk_corner_6: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_3',
 		children: [],
 	},
 	balk_corner_7: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_4',
 		children: [],
 	},
 	balk_corner_8: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_4',
 		children: [],
 	},
 	balk_corner_9: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_5',
 		children: [],
 	},
 	balk_corner_10: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * -0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_5',
 		children: [],
 	},
 	balk_corner_11: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_6',
 		children: [],
 	},
 	balk_corner_12: {
-		component: 'BalkCorner', // Колонна 6
-		position: [0, 0, 0], // Шестая колонна (середина верхней части)
+		component: 'BalkCorner',
+		position: [0, 0, 0],
 		rotation: [0, Math.PI * -0.5, 0],
 		scale: [1, 1, 1],
 		parent: 'balk150_150_2200_6',
@@ -379,40 +377,36 @@ export const modelConfig = {
 	},
 
 	balk150_150_1000_1: {
-		component: 'Balk150_150_1000', // Горизонтальная балка 1
-		position: [-1.5, 2.2, 2.5 - BALK150_150_1000_OFFSET], // Левый нижний угол
+		component: 'Balk150_150_1000',
+		position: [-1.5, 2.2, 2.5 - BALK150_150_1000_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [3, 1, 1],
 		parent: 'base',
-		children: [
-			...lodgeKeys,
-		],
+		children: [...lodgeKeys],
 	},
 	balk150_150_1000_2: {
-		component: 'Balk150_150_1000', // Горизонтальная балка 2
-		position: [-1.5, 2.2, -2.5 + BALK150_150_1000_OFFSET], // Правый нижний угол
+		component: 'Balk150_150_1000',
+		position: [-1.5, 2.2, -2.5 + BALK150_150_1000_OFFSET],
 		rotation: [0, 0, 0],
 		scale: [3, 1, 1],
 		parent: 'base',
-		children: [
-			// "lodge150_50_1000_2"
-		],
+		children: [],
 	},
 	balk150_150_1000_3: {
-		component: 'Balk150_150_1000', // Горизонтальная балка 3
+		component: 'Balk150_150_1000',
 		position: [
 			-1.5 + BALK150_150_1000_OFFSET,
 			2.2,
 			2.5 - BALK150_150_1000_OFFSET * 2,
-		], // Левый верхний угол
+		],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [4.7, 1, 1],
 		parent: 'base',
 		children: ['lodge150_50_1000_2_1'],
 	},
 	balk150_150_1000_4: {
-		component: 'Balk150_150_1000', // Горизонтальная балка 4
-		position: [1.5 - BALK150_150_1000_OFFSET, 2.2, 2.5 - BALK150_150_1000_OFFSET * 2], // Правый верхний угол
+		component: 'Balk150_150_1000',
+		position: [1.5 - BALK150_150_1000_OFFSET, 2.2, 2.5 - BALK150_150_1000_OFFSET * 2],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [4.7, 1, 1],
 		parent: 'base',
@@ -420,50 +414,48 @@ export const modelConfig = {
 	},
 
 	lodge20_200_1000_1: {
-		component: 'Lodge20_200_1000', // Горизонтальная балка 1
+		component: 'Lodge20_200_1000',
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
 			2.2 + LEDGE_Y_OFFSET,
 			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
-		], // Левый нижний угол
+		],
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2, 1, 1],
 		parent: 'base',
-		children: [
-			...keys
-		],
+		children: [...keys],
 	},
 	lodge20_200_1000_2: {
-		component: 'Lodge20_200_1000', // Горизонтальная балка 2
+		component: 'Lodge20_200_1000',
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
 			2.2 + LEDGE_Y_OFFSET,
 			-2.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
-		], // Правый нижний угол
+		],
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2, 1, 1],
 		parent: 'base',
 		children: [],
 	},
 	lodge20_200_1000_3: {
-		component: 'Lodge20_200_1000', // Горизонтальная балка 3
+		component: 'Lodge20_200_1000',
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE,
 			2.2 + LEDGE_Y_OFFSET,
 			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
-		], // Левый верхний угол
+		],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [5 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 - LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
 		children: [],
 	},
 	lodge20_200_1000_4: {
-		component: 'Lodge20_200_1000', // Горизонтальная балка 4
+		component: 'Lodge20_200_1000',
 		position: [
 			1.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
 			2.2 + LEDGE_Y_OFFSET,
 			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
-		], // Правый верхний угол
+		],
 		rotation: [0, Math.PI * 0.5, 0],
 		scale: [5 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 - LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
@@ -471,35 +463,28 @@ export const modelConfig = {
 	},
 
 	lodge20_200_1000_5: {
-		component: 'Lodge20_200_1000', // Горизонтальная балка 1
+		component: 'Lodge20_200_1000',
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
 			2.2 + LEDGE_Y_OFFSET * 2,
 			2.5 + LEDGE_OFFSET_FROM_COLUMN_EDGE,
-		], // Левый нижний угол
+		],
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
-		children: [
-			// 'ruberoid1000_1000_2_1',
-			// 'ruberoid1000_1000_2_2',
-			...ruberoidKeys,
-			'profileCanopyPerimeterClosed_1'
-		],
+		children: [...ruberoidKeys, 'profileCanopyPerimeterClosed_1'],
 	},
 	lodge20_200_1000_6: {
-		component: 'Lodge20_200_1000', // Горизонтальная балка 2
+		component: 'Lodge20_200_1000',
 		position: [
 			-1.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
 			2.2 + LEDGE_Y_OFFSET * 2,
 			-2.5 - LEDGE_OFFSET_FROM_COLUMN_EDGE - LODGE20_200_1000_WIDTH,
-		], // Правый нижний угол
+		],
 		rotation: [0, 0, 0],
 		scale: [3 + LEDGE_OFFSET_FROM_COLUMN_EDGE * 2 + LODGE20_200_1000_WIDTH * 2, 1, 1],
 		parent: 'base',
-		children: [
-			'profileCanopyPerimeterClosed_2'
-		],
+		children: ['profileCanopyPerimeterClosed_2'],
 	},
 	lodge20_200_1000_7: {
 		component: 'Lodge20_200_1000',
@@ -525,7 +510,6 @@ export const modelConfig = {
 		parent: 'base',
 		children: [],
 	},
-
 
 	...lodgeObjects,
 	...objectsWithKeys,
@@ -622,37 +606,21 @@ export const modelConfig = {
 		children: [],
 	},
 
-	// ruberoid1000_1000_2_1: {
-	// 	component: 'Ruberoid1000_1000_2',
-	// 	position: [0.02, 0.121, 0],
-	// 	rotation: [0, 0, 0],
-	// 	scale: [3.36, 1, 1],
-	// 	parent: 'lodge20_200_1000_5',
-	// 	children: [],
-	// },
-	// ruberoid1000_1000_2_2: {
-	// 	component: 'Ruberoid1000_1000_2',
-	// 	position: [0.02+1*2, 0.121, 0],
-	// 	rotation: [0, 0, 0],
-	// 	scale: [1, 1, 1],
-	// 	parent: 'lodge20_200_1000_5',
-	// 	children: [],
-	// },
 	...ruberoidObjects,
 
 	profileCanopyPerimeterClosed_1: {
-		component: 'ProfileCanopyPerimeterClosed', // Профиль периметра
+		component: 'ProfileCanopyPerimeterClosed',
 		position: [0, 0.2, 0.02],
 		rotation: [0, 0, 0],
-		scale: [3.40, 1, 1],
+		scale: [3.4, 1, 1],
 		parent: 'lodge20_200_1000_5',
 		children: [],
 	},
 	profileCanopyPerimeterClosed_2: {
-		component: 'ProfileCanopyPerimeterClosed', // Профиль периметра
-		position: [3.40, 0.2, 0],
+		component: 'ProfileCanopyPerimeterClosed',
+		position: [3.4, 0.2, 0],
 		rotation: [0, Math.PI, 0],
-		scale: [3.40, 1, 1],
+		scale: [3.4, 1, 1],
 		parent: 'lodge20_200_1000_5',
 		children: [],
 	},

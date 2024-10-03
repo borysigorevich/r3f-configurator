@@ -1,4 +1,4 @@
-import { Html, OrbitControls, Stage } from '@react-three/drei';
+import { OrbitControls, Stage } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Experience } from './components/experience.tsx';
 import { LengthSlider } from './components/ui/length-slider.tsx';
